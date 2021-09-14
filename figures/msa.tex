@@ -1,0 +1,49 @@
+\documentclass[10pt]{article}
+
+\usepackage{texshade}
+
+\headheight=0pt
+\headsep=0pt
+\hoffset=0pt
+\voffset=0pt
+\paperwidth=11in
+\paperheight=8.5in
+\ifx\pdfoutput\undefined
+\relax
+\else
+\pdfpagewidth=\paperwidth
+\pdfpageheight=\paperheight
+\fi
+\oddsidemargin=-0.9in
+\topmargin=-0.7in
+\textwidth=10.8in
+\textheight=7.9in
+
+\pagestyle{empty}
+
+\begin{document}
+\begin{texshade}{/home/lbaer/bioinformatics/projects/210913_phylo_tanya/data/proteins_msa.fasta}
+\seqtype{P}
+\shadingmode{identical}
+\threshold{50}
+\hideconsensus
+\shadingcolors{blues}
+\hidelogoscale
+\shownames{left}
+\nameseq{1}{Lancelet NGFR/NRADD}
+\nameseq{2}{Xenopus L NGFR}
+\nameseq{3}{Chicken NGFR}
+\nameseq{4}{Mouse NGFR}
+\nameseq{5}{Human NGFR}
+\nameseq{6}{Zebrafish NGFR}
+\nameseq{7}{Zebrafish NGFR like 12}
+\nameseq{8}{Zebrafish NGFR like 3}
+\nameseq{9}{Mouse NRADD}
+\nameseq{10}{Zebrafish NRADD}
+\nameseq{11}{Chicken NRADD}
+\nameseq{12}{Xenopus tropicalis NRADD}
+\nameseq{13}{Xenopus laevis NRADD}
+\shownumbering{right}
+\showlegend
+\end{texshade}
+\end{document}

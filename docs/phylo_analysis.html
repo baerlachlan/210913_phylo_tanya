@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Lachlan Baer" />
+
+
+<title>p75/NRH1 phylogenetics</title>
+
+<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">p75/NRH1 phylogenetics</h1>
+<h4 class="author">Lachlan Baer</h4>
+<h4 class="date">14 September, 2021</h4>
+
+</div>
+
+
+<div id="setup" class="section level1">
+<h1>Setup</h1>
+<pre class="r"><code>suppressPackageStartupMessages({
+  ## Common
+  library(tidyverse)
+  library(magrittr)
+  library(future.apply)
+  library(here)
+  library(AnnotationHub)
+  library(purrr)
+  library(scales)
+  library(kableExtra)
+  library(tictoc)
+  library(ggrepel)
+  library(RColorBrewer)
+  library(ggpubr)
+  library(pander)
+  library(rmarkdown)
+  ## Project specific
+  library(rentrez)
+  library(msa)
+  library(phangorn)
+})</code></pre>
+<pre class="r"><code>if (interactive()) setwd(here::here())
+theme_set(theme_bw())
+cores &lt;- availableCores() - 1</code></pre>
+</div>
+<div id="metadata" class="section level1">
+<h1>Metadata</h1>
+<p>Metadata was supplied by Tanya (Table 1 of Additional file 1) containing NCBI accessions of nucleotide and protein sequences that were to be phylogenetically analysed. This data was setup in <code>R</code> as a <code>tibble</code> to allow for easy access of the information.</p>
+<pre class="r"><code>meta &lt;- tribble(
+  ~description, ~nuc_accession, ~prot_accession,
+  &quot;Zebrafish NGFR&quot;, &quot;NM_001198660.1&quot;, &quot;NP_001185589.1&quot;,
+  &quot;Zebrafish NGFR like 12&quot;, &quot;XM_003199576.1&quot;, &quot;XP_003199624.1&quot;,
+  &quot;Zebrafish NGFR like 3&quot;, &quot;XM_003198085.3&quot;, &quot;XP_003198133.1&quot;,
+  &quot;Zebrafish NRADD&quot;, &quot;XM_695893.4&quot;, &quot;XP_700985.3&quot;,
+  &quot;Xenopus tropicalis NRADD&quot;, &quot;NM_001007998.2&quot;, &quot;NP_001007999.2&quot;,
+  &quot;Xenopus L NGFR&quot;, &quot;NM_001088466.1&quot;, &quot;NP_001081935.1&quot;,
+  &quot;Xenopus laevis NRADD&quot;, &quot;NM_001091773.1&quot;, &quot;NP_001085242.1&quot;,
+  &quot;Mouse NGFR&quot;, &quot;NM_033217.3&quot;, &quot;NP_150086.2&quot;,
+  &quot;Mouse NRADD&quot;, &quot;NM_026012.2&quot;, &quot;NP_080288.1&quot;,
+  &quot;Chicken NGFR&quot;, &quot;NM_001146133.1&quot;, &quot;NP_001139605.1&quot;,
+  &quot;Chicken NRADD&quot;, &quot;XM_418509.3&quot;, &quot;XP_418509.3&quot;,
+  &quot;Human NGFR&quot;, &quot;NM_002507.3&quot;, &quot;p08138&quot;,
+  &quot;Lancelet NGFR/NRADD&quot;, &quot;XM_002588230.1&quot;, &quot;XP_002588276.1&quot;
+)</code></pre>
+</div>
+<div id="protein-sequences" class="section level1">
+<h1>Protein sequences</h1>
+<p>Protein sequences for the provided accessions were obtained in <code>FASTA</code> format from the NCBI protein database using the <code>rentrez</code> package. Some manual cleaning was also performed in this step to shorten and rename the FASTA headers, as long headers were found to cause errors in downstream software.</p>
+<pre class="r"><code>proteins &lt;- entrez_fetch(
+  db = &quot;protein&quot;,
+  id = meta$prot_accession,
+  rettype = &quot;fasta&quot;
+) %&gt;%
+  str_split(pattern = &quot;\\n&quot;) %&gt;%
+  unlist() %&gt;%
+  vapply(function(line){
+    if (str_detect(line, &quot;^&gt;&quot;)) {
+      str_split(line, &quot; &quot;) %&gt;%
+        unlist() %&gt;%
+        .[1]
+    } else {
+      line
+    }
+  }, FUN.VALUE = character(1), USE.NAMES = FALSE) %&gt;%
+  .[. != &quot;&quot;]
+proteins[proteins == &quot;&gt;sp|P08138.1|TNR16_HUMAN&quot;] &lt;- &quot;&gt;p08138&quot;
+proteins &lt;- vapply(proteins, function(line){
+  acc &lt;- str_remove(line, &quot;&gt;&quot;)
+  if (acc %in% meta$prot_accession) {
+    paste0(&quot;&gt;&quot;, meta$description[meta$prot_accession == acc])
+  } else {
+    line
+  }
+}, FUN.VALUE = character(1), USE.NAMES = FALSE)</code></pre>
+<p>The resulting <code>FASTA</code> file <a href=""><code>proteins.fasta</code></a> was saved locally, ready for multiple sequence alignment.</p>
+<pre class="r"><code>write_lines(proteins, here(&quot;data/proteins.fasta&quot;))</code></pre>
+</div>
+<div id="multiple-sequence-alignment" class="section level1">
+<h1>Multiple sequence alignment</h1>
+<p>Multiple sequence alignment was performed using the Clustal Omega algorithm implemented in the <code>msa</code> package. The resulting alignment was <a href=""><code>proteins_msa.fasta</code></a> was saved for use with <a href="http://molevol.cmima.csic.es/castresana/Gblocks.html"><code>Gblocks</code> software</a>. A summarised version of the alignment can be seen printed below.</p>
+<pre class="r"><code>sequences &lt;- readAAStringSet(here(&quot;data/proteins.fasta&quot;))
+aln &lt;- msa(sequences, method = &quot;ClustalOmega&quot;)
+aln</code></pre>
+<p>For visualisation purposes the alignment was saved in <code>PDF</code> format to file <a href=""><code>msa.pdf</code></a>.</p>
+<pre class="r"><code>msaPrettyPrint(aln, output = &quot;pdf&quot;, showLogo = &quot;none&quot;, showConsensus = &quot;none&quot;,
+               file = here(&quot;figures/msa.pdf&quot;),
+               alFile = here(&quot;data/proteins_msa.fasta&quot;),
+               askForOverwrite = FALSE)
+file.rename(here(&quot;msa.pdf&quot;), here(&quot;figures/msa.pdf&quot;))</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="gblocks" class="section level1">
+<h1>Gblocks</h1>
+<p><code>Gblocks</code> software was used to eliminate poorly aligned positions and divergent regions of the multiple protein sequence alignment. <code>Gblocks</code> was run from the command line with the following relaxed parameters for less stringent selection as recommended for short alignments:</p>
+<ul>
+<li>Minimum Number Of Sequences For A Conserved Position: 7</li>
+<li>Minimum Number Of Sequences For A Flanking Position: 8</li>
+<li>Maximum Number Of Contiguous Nonconserved Positions: 10</li>
+<li>Minimum Length Of A Block: 5</li>
+<li>Allowed Gap Positions: None</li>
+<li>Use Similarity Matrices: Yes</li>
+</ul>
+<p>The resulting alignment file <a href=""><code>proteins_msa.fasta-gb</code></a> was output by the software for further phylogenetic analysis. A visualisation of the <code>Gblocks</code> selection process was also output in the file <a href=""><code>proteins_msa.fasta-gb.htm</code></a>.</p>
+</div>
+<div id="phylogenetic-tree-construction" class="section level1">
+<h1>Phylogenetic tree construction</h1>
+<p>Phylogenetic analysis was performed using the <code>phangorn</code> package. Firstly, the alignment produced by <code>Gblocks</code> was loaded as a <code>phyDat</code> object.</p>
+<pre class="r"><code>phyDat &lt;- read.phyDat(here(&quot;data/proteins_msa.fasta-gb&quot;), format = &quot;fasta&quot;, type = &quot;AA&quot;)</code></pre>
+<p><code>phangorn</code> provides a number of different protein models for computing likelihood which can be tested with the <code>modelTest()</code> function.</p>
+<pre class="r"><code>mt &lt;- modelTest(phyDat, model = &quot;all&quot;)
+env &lt;- attr(mt, &quot;env&quot;)
+fitStart &lt;- eval(get(mt$Model[which.min(mt$BIC)], env), env)</code></pre>
+<p>JTT was chosen as the most appropriate model for the data. The model was then optimised using <code>optim.pml()</code> which allows for tree rearrangements.</p>
+<pre class="r"><code>fit &lt;- optim.pml(fitStart, optGamma = TRUE, rearrangement = &quot;ratchet&quot;)</code></pre>
+<p>Lastly, bootstrapping was applied to test how well the edges of the tree were supported.</p>
+<pre class="r"><code>set.seed(210914)
+bs &lt;- bootstrap.pml(fit, bs=100, optNni = TRUE)</code></pre>
+<pre class="r"><code>plotBS(midpoint(fit$tree), bs, type = &quot;phylogram&quot;,
+       main = &quot;Phylogenetic analysis of the relationships of chordate p75NTR and NRH genes&quot;)</code></pre>
+<p><img src="phylo_analysis_files/figure-html/plotTree-1.png" width="768" style="display: block; margin: auto;" /></p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
