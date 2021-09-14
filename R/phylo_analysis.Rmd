@@ -81,6 +81,14 @@ meta <- tribble(
   "Human NGFR", "NM_002507.3", "p08138",
   "Lancelet NGFR/NRADD", "XM_002588230.1", "XP_002588276.1"
 )
+meta %>%
+  kable(
+    align = "l",
+    caption = "Metadata"
+  ) %>%
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  )
 ```
 
 # Protein sequences
@@ -117,7 +125,7 @@ proteins <- vapply(proteins, function(line){
 }, FUN.VALUE = character(1), USE.NAMES = FALSE)
 ```
 
-The resulting `FASTA` file [`proteins.fasta`]() was saved locally, ready for multiple sequence alignment.
+The resulting `FASTA` file [`proteins.fasta`](https://github.com/baerlachlan/210913_phylo_tanya/blob/master/data/proteins.fasta) was saved locally, ready for multiple sequence alignment.
 
 ```{r saveProteinSeqs}
 write_lines(proteins, here("data/proteins.fasta"))
@@ -126,16 +134,19 @@ write_lines(proteins, here("data/proteins.fasta"))
 # Multiple sequence alignment
 
 Multiple sequence alignment was performed using the Clustal Omega algorithm implemented in the `msa` package.
-The resulting alignment was [`proteins_msa.fasta`]() was saved for use with [`Gblocks` software](http://molevol.cmima.csic.es/castresana/Gblocks.html).
+The resulting alignment was [`proteins_msa.fasta`](https://github.com/baerlachlan/210913_phylo_tanya/blob/master/data/proteins_msa.fasta) was saved for use with [`Gblocks` software](http://molevol.cmima.csic.es/castresana/Gblocks.html).
 A summarised version of the alignment can be seen printed below.
 
 ```{r msa, results='hide'}
 sequences <- readAAStringSet(here("data/proteins.fasta"))
 aln <- msa(sequences, method = "ClustalOmega")
+```
+
+```{r msaSimpleVis}
 aln
 ```
 
-For visualisation purposes the alignment was saved in `PDF` format to file [`msa.pdf`]().
+For better visualisation purposes, the complete alignment was saved in `PDF` format to file [`msa.pdf`](https://github.com/baerlachlan/210913_phylo_tanya/blob/master/figures/msa.pdf).
 
 ```{r saveMsa, results='hide'}
 msaPrettyPrint(aln, output = "pdf", showLogo = "none", showConsensus = "none",
@@ -158,8 +169,8 @@ file.rename(here("msa.pdf"), here("figures/msa.pdf"))
 - Allowed Gap Positions: None
 - Use Similarity Matrices: Yes
 
-The resulting alignment file [`proteins_msa.fasta-gb`]() was output by the software for further phylogenetic analysis.
-A visualisation of the `Gblocks` selection process was also output in the file [`proteins_msa.fasta-gb.htm`]().
+The resulting alignment file [`proteins_msa.fasta-gb`](https://github.com/baerlachlan/210913_phylo_tanya/blob/master/data/proteins_msa.fasta-gb) was output by the software for further phylogenetic analysis.
+A visualisation of the `Gblocks` selection process was also output in the file [`proteins_msa.fasta-gb.htm`](https://github.com/baerlachlan/210913_phylo_tanya/blob/master/data/proteins_msa.fasta-gb.htm).
 
 # Phylogenetic tree construction
 

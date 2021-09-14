@@ -37,6 +37,8 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -304,7 +306,178 @@ cores &lt;- availableCores() - 1</code></pre>
   &quot;Chicken NRADD&quot;, &quot;XM_418509.3&quot;, &quot;XP_418509.3&quot;,
   &quot;Human NGFR&quot;, &quot;NM_002507.3&quot;, &quot;p08138&quot;,
   &quot;Lancelet NGFR/NRADD&quot;, &quot;XM_002588230.1&quot;, &quot;XP_002588276.1&quot;
-)</code></pre>
+)
+meta %&gt;%
+  kable(
+    align = &quot;l&quot;,
+    caption = &quot;Metadata&quot;
+  ) %&gt;%
+  kable_styling(
+    bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;, &quot;responsive&quot;)
+  )</code></pre>
+<table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<caption>
+Metadata
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+description
+</th>
+<th style="text-align:left;">
+nuc_accession
+</th>
+<th style="text-align:left;">
+prot_accession
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Zebrafish NGFR
+</td>
+<td style="text-align:left;">
+NM_001198660.1
+</td>
+<td style="text-align:left;">
+NP_001185589.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Zebrafish NGFR like 12
+</td>
+<td style="text-align:left;">
+XM_003199576.1
+</td>
+<td style="text-align:left;">
+XP_003199624.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Zebrafish NGFR like 3
+</td>
+<td style="text-align:left;">
+XM_003198085.3
+</td>
+<td style="text-align:left;">
+XP_003198133.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Zebrafish NRADD
+</td>
+<td style="text-align:left;">
+XM_695893.4
+</td>
+<td style="text-align:left;">
+XP_700985.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Xenopus tropicalis NRADD
+</td>
+<td style="text-align:left;">
+NM_001007998.2
+</td>
+<td style="text-align:left;">
+NP_001007999.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Xenopus L NGFR
+</td>
+<td style="text-align:left;">
+NM_001088466.1
+</td>
+<td style="text-align:left;">
+NP_001081935.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Xenopus laevis NRADD
+</td>
+<td style="text-align:left;">
+NM_001091773.1
+</td>
+<td style="text-align:left;">
+NP_001085242.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mouse NGFR
+</td>
+<td style="text-align:left;">
+NM_033217.3
+</td>
+<td style="text-align:left;">
+NP_150086.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mouse NRADD
+</td>
+<td style="text-align:left;">
+NM_026012.2
+</td>
+<td style="text-align:left;">
+NP_080288.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chicken NGFR
+</td>
+<td style="text-align:left;">
+NM_001146133.1
+</td>
+<td style="text-align:left;">
+NP_001139605.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Chicken NRADD
+</td>
+<td style="text-align:left;">
+XM_418509.3
+</td>
+<td style="text-align:left;">
+XP_418509.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Human NGFR
+</td>
+<td style="text-align:left;">
+NM_002507.3
+</td>
+<td style="text-align:left;">
+p08138
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Lancelet NGFR/NRADD
+</td>
+<td style="text-align:left;">
+XM_002588230.1
+</td>
+<td style="text-align:left;">
+XP_002588276.1
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="protein-sequences" class="section level1">
 <h1>Protein sequences</h1>
@@ -335,22 +508,43 @@ proteins &lt;- vapply(proteins, function(line){
     line
   }
 }, FUN.VALUE = character(1), USE.NAMES = FALSE)</code></pre>
-<p>The resulting <code>FASTA</code> file <a href=""><code>proteins.fasta</code></a> was saved locally, ready for multiple sequence alignment.</p>
+<p>The resulting <code>FASTA</code> file <a href="https://github.com/baerlachlan/210913_phylo_tanya/blob/master/data/proteins.fasta"><code>proteins.fasta</code></a> was saved locally, ready for multiple sequence alignment.</p>
 <pre class="r"><code>write_lines(proteins, here(&quot;data/proteins.fasta&quot;))</code></pre>
 </div>
 <div id="multiple-sequence-alignment" class="section level1">
 <h1>Multiple sequence alignment</h1>
-<p>Multiple sequence alignment was performed using the Clustal Omega algorithm implemented in the <code>msa</code> package. The resulting alignment was <a href=""><code>proteins_msa.fasta</code></a> was saved for use with <a href="http://molevol.cmima.csic.es/castresana/Gblocks.html"><code>Gblocks</code> software</a>. A summarised version of the alignment can be seen printed below.</p>
+<p>Multiple sequence alignment was performed using the Clustal Omega algorithm implemented in the <code>msa</code> package. The resulting alignment was <a href="https://github.com/baerlachlan/210913_phylo_tanya/blob/master/data/proteins_msa.fasta"><code>proteins_msa.fasta</code></a> was saved for use with <a href="http://molevol.cmima.csic.es/castresana/Gblocks.html"><code>Gblocks</code> software</a>. A summarised version of the alignment can be seen printed below.</p>
 <pre class="r"><code>sequences &lt;- readAAStringSet(here(&quot;data/proteins.fasta&quot;))
-aln &lt;- msa(sequences, method = &quot;ClustalOmega&quot;)
-aln</code></pre>
-<p>For visualisation purposes the alignment was saved in <code>PDF</code> format to file <a href=""><code>msa.pdf</code></a>.</p>
+aln &lt;- msa(sequences, method = &quot;ClustalOmega&quot;)</code></pre>
+<pre class="r"><code>aln</code></pre>
+<pre><code>## ClustalOmega 1.2.0 
+## 
+## Call:
+##    msa(sequences, method = &quot;ClustalOmega&quot;)
+## 
+## MsaAAMultipleAlignment with 13 rows and 2001 columns
+##      aln                                                   names
+##  [1] MASNTAGRTRSGDPRDRQAGNSANS...QALRAIGRQDVIGLLQECNMGRHLV Lancelet NGFR/NRADD
+##  [2] -------------------------...TALRKIQRDDIAQSLNSDSTATSPV Xenopus L NGFR
+##  [3] -------------------------...VALRKIQRGDIAESLYSESTATSPV Chicken NGFR
+##  [4] -------------------------...AALRRIQRADIVESLCSESTATSPV Mouse NGFR
+##  [5] -------------------------...AALRRIQRADLVESLCSESTATSPV Human NGFR
+##  [6] -------------------------...TALKKINREDIAQSIIVKPTATSAV Zebrafish NGFR
+##  [7] -------------------------...TALKKINREDIAQSIIVKPTATSSV Zebrafish NGFR li...
+##  [8] -------------------------...------------------------- Zebrafish NGFR li...
+##  [9] -------------------------...DALAAIGREDVVQVLSSPAESSSVV Mouse NRADD
+## [10] -------------------------...SALTRIERPDIITALTAPTQGVSVV Zebrafish NRADD
+## [11] -------------------------...RALAAMGRQDVAECLAGPGDASSVV Chicken NRADD
+## [12] -------------------------...AALVNMERADVVENLNSTNDGSSVV Xenopus tropicali...
+## [13] -------------------------...AALVNMERADVVENLNSANDASSVV Xenopus laevis NRADD
+##  Con -------------------------...?AL??I?R?D????L?S???A?S?V Consensus</code></pre>
+<p>For better visualisation purposes, the complete alignment was saved in <code>PDF</code> format to file <a href="https://github.com/baerlachlan/210913_phylo_tanya/blob/master/figures/msa.pdf"><code>msa.pdf</code></a>.</p>
 <pre class="r"><code>msaPrettyPrint(aln, output = &quot;pdf&quot;, showLogo = &quot;none&quot;, showConsensus = &quot;none&quot;,
                file = here(&quot;figures/msa.pdf&quot;),
                alFile = here(&quot;data/proteins_msa.fasta&quot;),
                askForOverwrite = FALSE)
+## PDF doesnt seem to output to correct folder, move manually instead
 file.rename(here(&quot;msa.pdf&quot;), here(&quot;figures/msa.pdf&quot;))</code></pre>
-<pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="gblocks" class="section level1">
 <h1>Gblocks</h1>
@@ -363,7 +557,7 @@ file.rename(here(&quot;msa.pdf&quot;), here(&quot;figures/msa.pdf&quot;))</code>
 <li>Allowed Gap Positions: None</li>
 <li>Use Similarity Matrices: Yes</li>
 </ul>
-<p>The resulting alignment file <a href=""><code>proteins_msa.fasta-gb</code></a> was output by the software for further phylogenetic analysis. A visualisation of the <code>Gblocks</code> selection process was also output in the file <a href=""><code>proteins_msa.fasta-gb.htm</code></a>.</p>
+<p>The resulting alignment file <a href="https://github.com/baerlachlan/210913_phylo_tanya/blob/master/data/proteins_msa.fasta-gb"><code>proteins_msa.fasta-gb</code></a> was output by the software for further phylogenetic analysis. A visualisation of the <code>Gblocks</code> selection process was also output in the file <a href="https://github.com/baerlachlan/210913_phylo_tanya/blob/master/data/proteins_msa.fasta-gb.htm"><code>proteins_msa.fasta-gb.htm</code></a>.</p>
 </div>
 <div id="phylogenetic-tree-construction" class="section level1">
 <h1>Phylogenetic tree construction</h1>
