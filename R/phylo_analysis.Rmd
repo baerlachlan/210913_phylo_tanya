@@ -1,5 +1,5 @@
 ---
-title: "p75/NRH1 phylogenetics"
+title: "NGFR/NRADD phylogenetics"
 author: "Lachlan Baer"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
@@ -58,6 +58,12 @@ if (interactive()) setwd(here::here())
 theme_set(theme_bw())
 cores <- availableCores() - 1
 ```
+
+# Introduction
+
+This analysis was performed to address reviewer comments for Tanya's manuscript investigating the differences between closely related NGFR and NRADD genes in zebrafish.
+The reviewer stated that the phylogenetic analysis is pretty basic and that `G-blocks` software could be incorporated as an improvement.
+Therefore the aim of this analysis is to repeat the previous phylogenetic analysis as close as possible with the use of `G-blocks`.
 
 # Metadata
 
@@ -203,7 +209,17 @@ set.seed(210914)
 bs <- bootstrap.pml(fit, bs=100, optNni = TRUE)
 ```
 
-```{r plotTree}
+```{r plotTreeWithMidpoint, fig.cap="*Midpoint rooted tree of phylogenetic relationships with bootstrap support values.*"}
+png(here("figures/tree_v1.png"))
 plotBS(midpoint(fit$tree), bs, type = "phylogram",
-       main = "Phylogenetic analysis of the relationships of chordate p75NTR and NRH genes")
+       main = "Phylogenetic analysis of chordate NGFR and NRADD genes")
+dev.off()
 ```
+
+```{r PlotTree, fig.cap="*Unrooted tree of phylogenetic relationships with bootstrap support values.*"}
+png(here("figures/tree_v2.png"))
+plotBS(fit$tree, bs, type = "phylogram",
+       main = "Phylogenetic analysis of chordate NGFR and NRADD genes")
+dev.off()
+```
+

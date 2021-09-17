@@ -12,7 +12,7 @@
 <meta name="author" content="Lachlan Baer" />
 
 
-<title>p75/NRH1 phylogenetics</title>
+<title>NGFR/NRADD phylogenetics</title>
 
 <script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -254,9 +254,9 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">p75/NRH1 phylogenetics</h1>
+<h1 class="title toc-ignore">NGFR/NRADD phylogenetics</h1>
 <h4 class="author">Lachlan Baer</h4>
-<h4 class="date">14 September, 2021</h4>
+<h4 class="date">17 September, 2021</h4>
 
 </div>
 
@@ -287,6 +287,10 @@ div.tocify {
 <pre class="r"><code>if (interactive()) setwd(here::here())
 theme_set(theme_bw())
 cores &lt;- availableCores() - 1</code></pre>
+</div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>This analysis was performed to address reviewer comments for Tanya’s manuscript investigating the differences between closely related NGFR and NRADD genes in zebrafish. The reviewer stated that the phylogenetic analysis is pretty basic and that <code>G-blocks</code> software could be incorporated as an improvement. Therefore the aim of this analysis is to repeat the previous phylogenetic analysis as close as possible with the use of <code>G-blocks</code>.</p>
 </div>
 <div id="metadata" class="section level1">
 <h1>Metadata</h1>
@@ -573,8 +577,21 @@ fitStart &lt;- eval(get(mt$Model[which.min(mt$BIC)], env), env)</code></pre>
 <pre class="r"><code>set.seed(210914)
 bs &lt;- bootstrap.pml(fit, bs=100, optNni = TRUE)</code></pre>
 <pre class="r"><code>plotBS(midpoint(fit$tree), bs, type = &quot;phylogram&quot;,
-       main = &quot;Phylogenetic analysis of the relationships of chordate p75NTR and NRH genes&quot;)</code></pre>
-<p><img src="phylo_analysis_files/figure-html/plotTree-1.png" width="768" style="display: block; margin: auto;" /></p>
+       main = &quot;Phylogenetic analysis of chordate NGFR and NRADD genes&quot;)</code></pre>
+<div class="figure" style="text-align: center">
+<img src="phylo_analysis_files/figure-html/plotTreeWithMidpoint-1.png" alt="*Midpoint rooted tree of phylogenetic relationships with bootstrap support values.*" width="768" />
+<p class="caption">
+<em>Midpoint rooted tree of phylogenetic relationships with bootstrap support values.</em>
+</p>
+</div>
+<pre class="r"><code>plotBS(fit$tree, bs, type = &quot;phylogram&quot;,
+       main = &quot;Phylogenetic analysis of chordate NGFR and NRADD genes&quot;)</code></pre>
+<div class="figure" style="text-align: center">
+<img src="phylo_analysis_files/figure-html/PlotTree-1.png" alt="*Unrooted tree of phylogenetic relationships with bootstrap support values.*" width="768" />
+<p class="caption">
+<em>Unrooted tree of phylogenetic relationships with bootstrap support values.</em>
+</p>
+</div>
 </div>
 
 
