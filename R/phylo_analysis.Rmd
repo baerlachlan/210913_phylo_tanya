@@ -178,6 +178,28 @@ file.rename(here("msa.pdf"), here("figures/msa.pdf"))
 The resulting alignment file [`proteins_msa.fasta-gb`](https://github.com/baerlachlan/210913_phylo_tanya/blob/master/data/proteins_msa.fasta-gb) was output by the software for further phylogenetic analysis.
 A visualisation of the `Gblocks` selection process was also output in the file [`proteins_msa.fasta-gb.htm`](https://github.com/baerlachlan/210913_phylo_tanya/blob/master/data/proteins_msa.fasta-gb.htm).
 
+```{r}
+texshadeCode
+```
+
+```{r}
+gblocks_msa <- readAAMultipleAlignment(here("data/proteins_msa.fasta-gb"))
+## Replace whitespace with underscore so whole names are output
+gblocks_msa@unmasked@ranges@NAMES <- str_replace_all(
+  gblocks_msa@unmasked@ranges@NAMES, pattern = " ", replacement = "_"
+)
+msaPrettyPrint(gblocks_msa, output = "pdf", showLogo = "none", showConsensus = "none",
+               file = here("figures/gblocks_msa.pdf"),
+               askForOverwrite = FALSE,
+               code = paste0(
+                 "\\conservedresidues{Black}{White}{upper}{bf}",
+                 "\\hideconsensus"
+               )
+)
+## PDF doesnt seem to output to correct folder, move manually instead
+file.rename(here("gblocks_msa.pdf"), here("figures/gblocks_msa.pdf"))
+```
+
 # Phylogenetic tree construction
 
 Phylogenetic analysis was performed using the `phangorn` package.
